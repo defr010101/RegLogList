@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+</head>
+<body>
+    <form method="post" th:object="${change}">
+        <label for="username">Choose username</label>
+        <select th:field="*{username}" id="username">
+            <option th:each="user : ${users}"
+                    th:value="${user.getUsername()}"
+                    th:text="${user.getUsername()}">
+                user
+            </option>
+        </select>
+
+        <label for="roles">Choose role</label>
+        <select th:field="*{role}" id="roles">
+            <option th:each="role : ${T(com.example.regloglist.entity.Role).values()}"
+            th:value="${role}" th:text="${role}">
+                role
+            </option>
+        </select>
+
+        <button type="submit">Изменить</button>
+    </form>
+</body>
+</html>
